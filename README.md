@@ -2,4 +2,4 @@
 Consulta e Documentação Ionic Framework
 
 
-Este repositório serve para consulta, pesquisa e documentação para auxilio de desenvolvimento de sistemas com Ionic Framework. 
+Este repositório serve como consulta, pesquisa e documentação para o desenvolvimento de sistemas com Ionic Framework. 
