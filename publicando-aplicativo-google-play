@@ -1,2 +1,70 @@
 Este documento é um tutorial detalhado de como publicar um aplicativo desenvolvido no Ionic Framework com um passo a passo do ínicio ao fim. 
 
+Fonte no links de vídeos: 
+https://www.youtube.com/watch?v=oxiRp2BfDnA
+https://www.youtube.com/watch?v=vK4psBOr18I
+
+PRÉ REQUISITOS PARA PUBLICAÇÃO DO APLICATIVO: 
+
+- Ionic Framework 
+- Conta da Google Developer 
+- Aplicação no Ionic Framework
+- Android Studio 
+- Java JDK 
+- Android SDK
+- Cordova 
+
+Com a aplicação aberta no Ionic Framework e a conta Google Developer no navegador, vamo aos seguintes passos: 
+
+1 - Instalar o JDK no site oficial da Oracle 
+2 - Instalar o Android Studio 
+3 - Após Android Studio instalado, executa-lo e fazer o download dos componentes dentro do programa. 
+4 - Configurar as váriáveis de ambiente JAVA_HOME localizado na instalação do JDK 
+5 - Configurar as váriaveis de ambiente ANDROID_HOME localizado na instalação do JDK 
+6 - Adicionar tools do Android SDK junto de platform-tools
+7 - No PATH em váriaveis de ambiente adicionar os caminhos de tools e platform-tools
+
+8 - Caso o cordova não esteja instalado na máquina, você deve instalar ele globalmente com o comando CMD abaixo:
+npm install -g cordova ionic
+
+9 - Concordar com os termos do Ionic
+Acesse o caminho pelo CMD "C:\Users\USUARIO\AppData\Local\Android\Sdk\tools\bin\" e execute o comando "sdkmanager --licenses"
+
+10 -  Adicionar a plataforma Android no projeto Ionic com o comando "ionic cordova platform add android"
+
+11 - Nos arquivos do projeto Ionic, edite o arquivo config.xml com as informações referente ao aplicativo. 
+
+12 - Fazer o build do projeto Ionic com o comando abaixo: 
+ionic cordova build --release android 
+Logo após a execução do comando, um APK unsigned será gerado no projeto.
+
+13 - Criar uma chave de assinatura para o APK dentro da pasta do projeto no CMD com o comando abaixo: 
+keytool -genkey -v -keystore NOMEAPP_KS -alias NOMEAPP-KEY -keyalg RSA -keysize 2048 -validity 10000
+Após a execução deste comando, será gerado o key store no projeto Ionic. 
+
+14 - Mover o arquivo Key Store gerado para a pasta onde está nosso apk unsigned. 
+
+15 - Configuras as váriaveis de ambiente dentro de PATH para utilizar arsigner e zipalign
+
+16 - Assinar a chave de assinatura dentro da pasta onde está nosso apk unsigned e executar o comando CMD abaixo: 
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore NOMEAPP_KS app-release-unsigned.apk NOMEAPP-KEY
+Após a execução do comando, você pode renomear o nome do apk dentro da pasta
+
+17 - Utilize o zipalign com a execução do comando abaixo dentro da pasta onde está o apk: 
+zipalign -v 4 app-release-novonome.apk nomedefinitivo.apk
+Após a execução deste comando, o apk definitivo para publicação será gerado. 
+
+18 - Caso queira testar o APK, abra o Android Studio e instale uma virtual machine para simular um dispositivo Android, arrastando o 
+arquivo APK até a tela do simulador. 
+
+19 - Com o APK gerado em definitivo, publique ele na conta Google Developer, de preferência como versão BETA para testar antes de enviar
+para produção. 
+
+20 - Complete todas as etapas necesárias para publicação do APP no Google Play, publique, e aguarde até que seja aprovado. 
+
+
+
+
+
+
+
